@@ -1,0 +1,12 @@
+trigger:
+- none  # This pipeline will not trigger automatically
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use a Linux agent with Docker pre-installed
+
+steps:
+- script: docker pull nginx:latest
+  displayName: 'Pull NGINX Image from Docker Hub'
+
+- script: docker run --name my-nginx -d -p 80:80 nginx:latest
+  displayName: 'Run NGINX Container'
